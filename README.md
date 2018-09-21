@@ -27,6 +27,6 @@ This can easily be deployed to Heroku via docker. First, set the above env vars,
 
 ## How it Works
 
-Post2Slack uses Slack OAuth to get a token with `chat:write:user` scope, which is returned inside of an expiring, encrypted [JWE token][JWE] (this means that the token is not readable, and despite the fact that typical Slack access tokens don't expire, it expires in 1 week). This is then sent with an `Authorization: Bearer $token` header back to post2slack, along with a normal Slack API request for `chat.postMessage`.
+Post2Slack uses Slack OAuth to get a token with `chat:write:user` scope, which is returned inside of an expiring, encrypted [JWE token][JWE] (this means that the token is not readable, and despite the fact that typical Slack access tokens don't expire, it expires in 1 week). Then, a normal Slack API `chat.postMessage` request can be sent to Post2Slack, along with a `Authorization: Bearer $token` header for authentication.
 
 [JWE]: https://tools.ietf.org/html/rfc7516
