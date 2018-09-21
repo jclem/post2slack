@@ -23,7 +23,8 @@ defmodule Post2Slack.Router do
 
   get "/oauth/slack/callback" do
     with :ok <- Post2Slack.StateToken.verify_token(conn.params["state"]),
-         {:ok, access_token} <- Slack.exchange_code(conn.params["code"]) do
+         {:ok, access_token} <- Slack.exchange_code(conn.params["code"]),
+         access_token = Post2Slack.PostToken.create_token(access_token) do
       html = """
       <html>
         <body>

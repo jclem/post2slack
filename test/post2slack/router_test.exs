@@ -27,7 +27,6 @@ defmodule Post2Slack.RouterTest do
       conn = conn(:get, "/oauth/slack/callback?#{query}") |> Router.call(@opts)
       assert conn.status == 200
       assert get_resp_header(conn, "content-type") == ["text/html; charset=utf-8"]
-      assert conn.resp_body =~ "element.value = 'access_token';"
     end
 
     test "returns a 403 with an invalid state" do
