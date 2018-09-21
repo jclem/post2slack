@@ -1,0 +1,7 @@
+_build/
+deps/
+test/
+.elixir_ls/
+.env
+.git/
+*.swp
