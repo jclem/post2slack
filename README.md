@@ -11,6 +11,7 @@ For your .env file:
 3. Set `SLACK_CLIENT_SECRET` to your Slack client secret.
 4. Set `POST_SIGNING_SECRET` to a base64-encoded 32-byte value After compiling this app (which is possible without the secrets), use `mix post2_slack.gen.secret`.
 5. Set `STATE_SIGNING_SECRET` to another base64-encoded 32-byte value.
+6. Set `SLACK_REDIRECT_URI` to your redirect URI. You can use [ngrok][ngrok] for development. It should look something like `https://my-host/oauth/slack/callback`.
 
 To start:
 
