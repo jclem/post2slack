@@ -1,4 +1,4 @@
-# Post2Slack
+# Post2Slack [![Build Status](https://travis-ci.com/jclem/post2slack.svg?branch=master)](https://travis-ci.com/jclem/post2slack) [![Coverage Status](https://coveralls.io/repos/github/jclem/post2slack/badge.svg?branch=master)](https://coveralls.io/github/jclem/post2slack?branch=master)
 
 Post2Slack posts to a Slack channel as the authorized user.
 
@@ -27,6 +27,6 @@ This can easily be deployed to Heroku via docker. First, set the above env vars,
 
 ## How it Works
 
-Post2Slack uses Slack OAuth to get a token with `chat:write:user` scope, which is returned inside of an expiring, encrypted [JWE token][JWE] (this means that the token is not readable, and despite the fact that typical Slack access tokens don't expire, it expires in 1 week). Then, a normal Slack API `chat.postMessage` request can be sent to Post2Slack, along with a `Authorization: Bearer $token` header for authentication.
+Post2Slack uses Slack OAuth to get a token with `chat:write:user` scope, which is returned inside of an expiring, encrypted [JWE token][jwe] (this means that the token is not readable, and despite the fact that typical Slack access tokens don't expire, it expires in 1 week). Then, a normal Slack API `chat.postMessage` request can be sent to Post2Slack, along with a `Authorization: Bearer $token` header for authentication.
 
-[JWE]: https://tools.ietf.org/html/rfc7516
+[jwe]: https://tools.ietf.org/html/rfc7516
