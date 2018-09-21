@@ -31,7 +31,12 @@ defmodule Post2Slack.Router do
           <script>
             document.querySelector('a').addEventListener('click', evt => {
               evt.preventDefault();
-              document.execCommand('copy', '#{Plug.HTML.html_escape(access_token)}');
+              const element = document.createElement('textarea');
+              element.value = '#{Plug.HTML.html_escape(access_token)}';
+              document.body.appendChild(element);
+              element.select();
+              document.execCommand('copy');
+              document.body.removeChild(element);
             });
           </script>
         </body>
