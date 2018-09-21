@@ -6,7 +6,7 @@ config :post2slack,
 
 config :post2slack, Post2Slack.Router,
   port: {:system, "PORT"},
-  redirect_uri: {:system, "REDIRECT_URI"}
+  redirect_uri: {:system, "SLACK_REDIRECT_URI"}
 
 config :post2slack, Slack,
   client_id: {:system, "SLACK_CLIENT_ID"},
