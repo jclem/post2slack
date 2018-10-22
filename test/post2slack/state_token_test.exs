@@ -27,6 +27,18 @@ defmodule Post2Slack.StateTokenTest do
       assert StateToken.verify_token(token) == {:error, :invalid_token}
     end
 
+    test "errors for an invalid iat" do
+      token =
+        %Token{}
+        |> with_signer(hs256(Config.fetch!(:post2slack, :state_signing_secret)))
+        |> with_iat(current_time() + 60)
+        |> with_exp(current_time())
+        |> sign
+        |> get_compact
+
+      assert StateToken.verify_token(token) == {:error, :invalid_token}
+    end
+
     test "errors for an expired token" do
       token =
         %Token{}
