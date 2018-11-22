@@ -21,6 +21,12 @@ defmodule Post2Slack.Router do
     |> send_resp(302, body)
   end
 
+  get "/ping" do
+    conn
+    |> put_resp_header("content-type", "text/plain; charset=utf-8")
+    |> send_resp(200, "OK")
+  end
+
   get "/oauth/slack/callback" do
     with :ok <- Post2Slack.StateToken.verify_token(conn.params["state"]),
          {:ok, access_token} <- Slack.exchange_code(conn.params["code"]),
