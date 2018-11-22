@@ -23,7 +23,7 @@ WORKDIR /app
 
 COPY --from=build /app/_build/prod/rel/post2slack .
 
-ARG PORT=4000
+ARG PORT=80
 ENV PORT=$PORT
 EXPOSE $PORT
 CMD /app/bin/post2slack foreground
